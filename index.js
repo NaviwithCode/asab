@@ -7,8 +7,8 @@ import cors from "cors"
 import categoryRoute from './routes/categoryRoute.js'
 import productRoute from './routes/productsRoutes.js'
 import orderRouter from "./routes/orderRoute.js";
-import path from "path";
-import { fileURLToPath } from "url";
+// import path from "path";
+// import { fileURLToPath } from "url";
 // import addressRouter from './routes/addressRoutes.js'
 // import paymentRoutes from './routes/paymentRoutes.js'
 // import addressRouter from './routes/address.js'
@@ -27,13 +27,13 @@ const app = express();
 // databse config
 connectDB();
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+// const __filename = fileURLToPath(import.meta.url)
+// const __dirname = path.dirname(__filename)
 // middelwares
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors())
-app.use(express.static(path.join(__dirname,"./client/build")))
+// app.use(express.static(path.join(__dirname,"./client/build")))
 
 // routes
 app.use("/api/v1/auth", authRoutes);
@@ -50,11 +50,11 @@ app.use('/api/v1/order',orderRouter)
 // app.use("/api/v1/order",orderRouter)
 
 // rest api
-// app.get("/", (req, res) => {
-//   res.send({
-//     message: "welcome to mva group",
-//   });
-// });
+app.get("/", (req, res) => {
+  res.send({
+    message: "welcome to mva group",
+  });
+});
 // app.use("*",function(req,res){
 //   res.sendFile(path.join(__dirname,"./client/build/index.html"))
 // })
